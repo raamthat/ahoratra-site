@@ -161,3 +161,11 @@ body:has(.hero-shot > .slot) .feat.first { padding-top: 64px; }
 @container site (min-width: 760px) {
   .feat .wrap:has(> .shot > .slot), .feat.flip .wrap:has(> .shot > .slot) { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Until the hero's screenshot arrives (Claude Design, 2 Nov 2026): the phone's hero keeps the sky's arc and horizon
+   below the button, as the desktop's does, so the day's strip no longer runs through it. Like the rules above, it stops
+   matching once shot-1 is in. */
+body:has(.hero-shot > .slot) .hero-text { padding-bottom: 196px; }
+@container site (min-width: 760px) {
+  body:has(.hero-shot > .slot) .hero-text { padding-bottom: 150px; }
+}
