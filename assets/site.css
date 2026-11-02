@@ -1,0 +1,163 @@
+/* ahoratra.day — one stylesheet, system fonts only, no outside requests.
+   Tokens are the app's (1.0.1 canvas): page #EDEDEB / #000000, cards #FFFFFF / #1C1C1E, ink #000000 / #FFFFFF,
+   secondary ink #505055 / #AEAEB2, separators #D6D6D3 / #38383A. The sky is the app's: dusk by day, night in dark mode.
+   Layout answers to the width of .site (a container), so the same CSS draws the phone and desktop boards. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html, body { margin: 0; }
+body { background: #EDEDEB; }
+@media (prefers-color-scheme: dark) { body { background: #000000; } }
+
+.site {
+  container: site / inline-size;
+  --bg: #EDEDEB; --surface: #FFFFFF; --ink: #000000; --ink2: #505055; --sep: #D6D6D3;
+  --btn: #000000; --btn-ink: #FFFFFF; --shadow: 0 24px 60px rgba(8, 18, 46, 0.22);
+  background: var(--bg); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; font-kerning: normal;
+}
+.site[data-theme="dark"] {
+  --bg: #000000; --surface: #1C1C1E; --ink: #FFFFFF; --ink2: #AEAEB2; --sep: #38383A;
+  --btn: #FFFFFF; --btn-ink: #000000; --shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+@media (prefers-color-scheme: dark) {
+  .site:not([data-theme="light"]) {
+    --bg: #000000; --surface: #1C1C1E; --ink: #FFFFFF; --ink2: #AEAEB2; --sep: #38383A;
+    --btn: #FFFFFF; --btn-ink: #000000; --shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* the sky: dusk by day, night in dark mode */
+.sky { position: absolute; inset: 0; overflow: hidden; }
+.sky svg { display: block; width: 100%; height: 100%; }
+.sky .night { display: none; }
+.site[data-theme="dark"] .sky .day { display: none; }
+.site[data-theme="dark"] .sky .night { display: inline; }
+@media (prefers-color-scheme: dark) {
+  .site:not([data-theme="light"]) .sky .day { display: none; }
+  .site:not([data-theme="light"]) .sky .night { display: inline; }
+}
+
+a { color: inherit; }
+a:focus-visible { outline: 3px solid #6E94C1; outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+.icon { display: block; width: 32px; height: 32px; flex-shrink: 0; }
+
+/* words still to come: the canvas's dotted mark */
+.mark { border-bottom: 1.5px dotted currentColor; padding-bottom: 1px; opacity: 0.9; }
+
+/* header, over the sky */
+.hdr { position: relative; z-index: 2; color: #FFFFFF; }
+.hdr .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 72px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; font-size: 19px; font-weight: 600; letter-spacing: -0.2px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22); }
+.hdr nav { display: flex; gap: 4px; }
+.hdr nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; text-decoration: none; font-size: 15px; font-weight: 600; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22); }
+.hdr nav a:hover, .hdr nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1.5px; }
+
+/* the hero: the sky first */
+.hero { position: relative; color: #FFFFFF; margin-bottom: 0; }
+.hero-in { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: stretch; padding-top: 28px; }
+.hero-text { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22); }
+.eyebrow { margin: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.2px; opacity: 0.92; }
+.hero h1 { margin: 8px 0 0; font-size: 38px; line-height: 1.1; font-weight: 700; letter-spacing: -0.6px; text-wrap: balance; }
+.lede { margin: 16px 0 0; font-size: 18px; line-height: 1.5; max-width: 36ch; }
+.cta { margin-top: 26px; display: flex; }
+.cta-soon { margin: 0; display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border-radius: 26px;
+  border: 1.5px solid rgba(255, 255, 255, 0.9); color: #FFFFFF; font-size: 17px; font-weight: 600; letter-spacing: -0.2px; text-shadow: none; }
+/* at launch: Apple's badge, unmodified; clear space a quarter of its height */
+.badge { display: inline-block; padding: 14px; margin: -14px; line-height: 0; }
+.badge img { display: block; height: 54px; width: auto; }
+.badge-slot { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; max-width: 340px; padding: 6px 14px;
+  border: 1.5px dashed rgba(255, 255, 255, 0.85); border-radius: 10px; font-size: 13px; line-height: 1.35; color: #FFFFFF; text-shadow: none; }
+
+/* screenshots: the capture itself, rounded like the screen, no device frame (Apple's marketing guidelines) */
+.shot { margin: 0; }
+.screen { display: block; width: 100%; aspect-ratio: 1320 / 2868; border-radius: 13% / 6%; overflow: hidden; background: var(--surface); box-shadow: var(--shadow); }
+.screen img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.slot { display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; color: var(--ink2);
+  font-size: 13px; line-height: 1.4; outline: 1.5px dashed var(--ink2); outline-offset: -10px; }
+.hero-shot { width: 236px; margin: 36px auto -176px; position: relative; }
+
+/* the sections, in W21's order */
+main { display: block; }
+.feat { padding: 64px 0 8px; }
+.feat.first { padding-top: 220px; }
+.feat .wrap { display: grid; gap: 32px; }
+.feat .shot { width: 236px; justify-self: center; }
+.kicker { margin: 0 0 10px; font-size: 13px; line-height: 1.4; font-weight: 700; letter-spacing: 0.9px; color: var(--ink2); }
+.h { margin: 0; font-size: 28px; line-height: 1.15; font-weight: 700; letter-spacing: -0.4px; text-wrap: balance; }
+.pts { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; max-width: 34em; }
+.pts li { position: relative; padding-left: 22px; color: var(--ink); }
+.pts li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 8px; height: 8px; border-radius: 4px; background: #C48283; }
+.feat.cont { padding-top: 40px; }
+
+/* the closing band: private by design, under the night sky's colors */
+.band { position: relative; margin-top: 88px; color: #FFFFFF; }
+.band-in { position: relative; z-index: 1; padding-top: 64px; padding-bottom: 88px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22); }
+.band .kicker { color: rgba(255, 255, 255, 0.86); }
+.band .pts li { color: #FFFFFF; }
+.band .pts li::before { background: #FFF6DE; }
+
+/* footer */
+.ftr { padding: 40px 0 56px; border-top: 1px solid var(--sep); color: var(--ink2); font-size: 15px; line-height: 1.45; }
+.ftr .wrap { display: grid; gap: 18px; }
+.ftr-brand { display: flex; gap: 12px; align-items: center; }
+.ftr-name { margin: 0; color: var(--ink); font-weight: 600; }
+.ftr-sub, .copy, .legal { margin: 0; }
+.ftr nav { display: flex; gap: 8px; flex-wrap: wrap; }
+.ftr nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; margin-left: -8px; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--sep); }
+.legal { font-size: 13px; }
+
+/* privacy and support: a slim sky, then the page as a sheet */
+.slim { position: relative; min-height: 168px; }
+.doc { position: relative; margin: -56px auto 0; max-width: 760px; padding: 0 12px 64px; }
+.sheet { background: var(--surface); border-radius: 20px; padding: 28px 20px 36px; }
+.sheet h1 { margin: 0; font-size: 30px; line-height: 1.15; font-weight: 700; letter-spacing: -0.4px; }
+.sheet h2 { margin: 32px 0 8px; font-size: 21px; line-height: 1.25; font-weight: 700; letter-spacing: -0.2px; }
+.sheet h3 { margin: 24px 0 4px; font-size: 17px; line-height: 1.35; font-weight: 700; }
+.sheet p { margin: 10px 0 0; }
+.sheet ul { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; }
+.sheet a { text-underline-offset: 3px; }
+
+/* desktop: from 760 px of width */
+@container site (min-width: 760px) {
+  .wrap { padding: 0 48px; }
+  .icon { width: 36px; height: 36px; }
+  .hdr .wrap { min-height: 88px; }
+  .brand { font-size: 21px; }
+  .hdr nav a { font-size: 16px; padding: 0 14px; }
+  .hero-in { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 48px; padding-top: 56px; }
+  .hero-text { padding-bottom: 150px; max-width: 640px; }
+  .hero h1 { font-size: 60px; letter-spacing: -1.2px; }
+  .lede { font-size: 21px; }
+  .hero-shot { width: 300px; margin: 0 24px -200px 0; flex-shrink: 0; }
+  .feat { padding: 96px 0 8px; }
+  .feat.first { padding-top: 120px; }
+  .feat.first .feat-text { max-width: 640px; }
+  .feat .wrap { grid-template-columns: minmax(0, 1fr) 300px; align-items: center; column-gap: 96px; }
+  .feat.flip .wrap { grid-template-columns: 300px minmax(0, 1fr); }
+  .feat.flip .shot { order: -1; }
+  .feat .shot { width: 300px; }
+  .h { font-size: 44px; letter-spacing: -0.8px; }
+  .pts { font-size: 19px; }
+  .band-in { padding-top: 96px; padding-bottom: 120px; max-width: 900px; margin: 0 auto; }
+  .ftr .wrap { grid-template-columns: 1fr auto; align-items: center; }
+  .ftr .copy, .ftr .legal { grid-column: 1 / -1; }
+  .slim { min-height: 220px; }
+  .doc { margin-top: -84px; padding-bottom: 96px; }
+  .sheet { padding: 48px 56px 56px; border-radius: 24px; }
+  .sheet h1 { font-size: 40px; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+
+/* Until M-101i's screenshots arrive (added by the Code Advisor, 2 Nov 2026).
+   An empty slot (.screen.slot) hides its figure, and its section's text takes the full width. When a slot is replaced
+   by the screenshot <img>, as each SHOT comment in index.html says, these rules stop matching on their own. */
+.shot:has(> .slot) { display: none; }
+body:has(.hero-shot > .slot) .feat.first { padding-top: 64px; }
+.feat .wrap:has(> .shot > .slot) { grid-template-columns: minmax(0, 1fr); }
+.feat .wrap:has(> .shot > .slot) .feat-text { max-width: 680px; }
+@container site (min-width: 760px) {
+  .feat .wrap:has(> .shot > .slot), .feat.flip .wrap:has(> .shot > .slot) { grid-template-columns: minmax(0, 1fr); }
+}
