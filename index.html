@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ahoratra · Sunrise, dusk &amp; lunar calendar</title>
+<meta name="description" content="Ahoratra puts the real sun and moon on your day, calculated on your iPhone for where you are.">
+<style>
+  :root {
+    --bg: #f6f4ef; --ink: #1d2433; --ink-2: #4a5468; --rule: #e3dfd6; --accent: #2c5aa0;
+    --sky-top: #244f93; --sky-bottom: #3f6fb5;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #10141f; --ink: #e9ecf3; --ink-2: #a8b1c4; --rule: #2a3346; --accent: #8db4ff;
+            --sky-top: #0d1a33; --sky-bottom: #2b3f66; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  header { background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom)); color: #fff; padding: 64px 0 56px; }
+  header .wrap, main { max-width: 720px; margin: 0 auto; }
+  header .wrap { padding: 0 16px; }
+  header h1 { font-size: 40px; line-height: 1.1; margin: 0; }
+  header p { font-size: 19px; margin: 10px 0 0; opacity: .92; }
+  main { padding: 28px 16px 56px; }
+  p { margin: 0 0 12px; }
+  a { color: var(--accent); }
+  nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--ink-2); font-size: 15px; }
+  nav a { margin-right: 16px; }
+</style>
+</head>
+<body>
+<header><div class="wrap"><h1>Ahoratra</h1><p>Sunrise, dusk &amp; lunar calendar</p></div></header>
+<main>
+  <p>Ahoratra puts the real sun and moon on your day. Sunrise, sunset, the twilights and the moon are calculated on your
+  iPhone for where you are, and each day's classical Vedic reading comes with its source. It makes no predictions. You
+  decide.</p>
+  <p>No account, no ads, no tracking. It works offline, and nothing leaves your iPhone.</p>
+  <p>Coming soon for iPhone.</p>
+  <nav><a href="/support/">Support</a><a href="/privacy/">Privacy</a><a href="mailto:hello@ahoratra.day">hello@ahoratra.day</a></nav>
+</main>
+</body>
+</html>
