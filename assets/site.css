@@ -171,3 +171,4 @@ body:has(.hero-shot > .slot) .hero-text { padding-bottom: 196px; }
 @container site (min-width: 760px) {
   body:has(.hero-shot > .slot) .hero-text { padding-bottom: 150px; }
 }
+.brand img.icon { border-radius: 23%; }
