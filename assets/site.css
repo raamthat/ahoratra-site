@@ -1,4 +1,4 @@
-/* ahoratra.day — one stylesheet, system fonts only, no outside requests.
+/* dinaratra.day — one stylesheet, system fonts only, no outside requests.
    Tokens are the app's (1.0.1 canvas): page #EDEDEB / #000000, cards #FFFFFF / #1C1C1E, ink #000000 / #FFFFFF,
    secondary ink #505055 / #AEAEB2, separators #D6D6D3 / #38383A. The sky is the app's: dusk by day, night in dark mode.
    Layout answers to the width of .site (a container), so the same CSS draws the phone and desktop boards. */

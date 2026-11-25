@@ -1,6 +1,6 @@
 # ahoratra-site
 
-The website for Ahoratra: Sun & Moon Planner, served at https://ahoratra.day by GitHub Pages.
+The website for Dinaratra: Sun & Moon Planner, served at https://dinaratra.day by GitHub Pages.
 
 - `/`: the home page
 - `/support/`: support
