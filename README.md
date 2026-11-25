@@ -1,4 +1,4 @@
-# ahoratra-site
+# dinaratra-site
 
 The website for Dinaratra: Sun & Moon Planner, served at https://dinaratra.day by GitHub Pages.
 
