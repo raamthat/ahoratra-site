@@ -6,4 +6,4 @@ The website for Dinaratra: Sun & Moon Planner, served at https://dinaratra.day b
 - `/support/`: support
 - `/privacy/`: the privacy policy
 
-Plain HTML and CSS, with no scripts, web fonts or trackers.
+Plain HTML and CSS, with no web fonts. One script: Umami's cookieless visit counter (since 25 Nov 2026, D412).
